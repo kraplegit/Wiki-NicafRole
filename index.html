@@ -183,25 +183,38 @@
 <div class="di-ib ml12 pl20 pt8">
 
 
-<span class="numbers members">Views <strong id="viewCount">0</strong></span>
-
-<!-- Your other HTML content here -->
-
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VFRKBLP89P"></script>
 <script>
-    // Mengambil jumlah pengunjung dari Google Analytics secara real-time
-    function updateViewCount() {
-        gtag('event', 'page_view', {
-            'send_to': 'G-VFRKBLP89P',
-            'event_callback': function() {
-                var viewCount = gtag.getAll()[0].get('config', 'page_view_count');
-                document.getElementById('viewCount').textContent = viewCount;
-            }
-        });
-    }
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    // Memanggil fungsi untuk memperbarui jumlah pengunjung saat halaman dimuat
-    window.onload = updateViewCount;
-</script></div>
+  gtag('config', 'G-VFRKBLP89P');
+    <!-- End Google Analytics Tracking Code -->
+        
+        // Fungsi untuk mendapatkan jumlah pengunjung secara real-time
+        function getRealTimeViews() {
+            gtag('event', 'page_view', {
+                'send_to': 'G-VFRKBLP89P',
+                'event_callback': function() {
+                    // Ambil jumlah pengunjung dari objek gtag
+                    var realTimeViews = window.gtag.dataLayer[0].config[0].metrics.find(metric => metric.index === 1).values[0];
+                    
+                    // Perbarui tampilan HTML
+                    document.getElementById('realTimeViews').innerText = 'Views ' + realTimeViews;
+                }
+            });
+        }
+
+        // Panggil fungsi saat halaman dimuat
+        window.onload = getRealTimeViews;
+    </script>
+
+
+    <span id="realTimeViews" class="numbers members">Views <strong>0</strong></span>
+
+</div>
                   <div class="information-block di-ib clearfix"><span class="information season"><a href="?">Summer 2022</a></span><span class="information type"><a href="https://www.youtube.com/channel/UCphWyFjr5KiI1PCGy59a7Ug">YouTube</a></span></div>
                 </div>
               </div>
