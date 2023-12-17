@@ -181,24 +181,24 @@
                     <div class="score-label score-6">0.00</div>
                   </div>
                   <div class="di-ib ml12 pl20 pt8">
-                  <span class="numbers members" id="viewsCounter">Views <strong>0</strong></span>
-                    <script>
-                      // Fungsi untuk mendapatkan jumlah pengunjung dari penyimpanan lokal
-                      function getViews() {
-                        return localStorage.getItem('views') || 0;
-                      }
-                      // Fungsi untuk menambah jumlah pengunjung dan memperbarui tampilan HTML
-                      function updateViews() {
-                        const viewsCounter = document.getElementById('viewsCounter');
-                        let views = parseInt(getViews());
-                        views++;
-                        localStorage.setItem('views', views);
-                        viewsCounter.innerHTML = `Views <strong>${views}</strong>`;
-                      }
-                      // Memanggil fungsi updateViews saat halaman dimuat
-                      window.onload = updateViews;
-                    </script>
-                  </div>
+<span class="numbers members" id="viewsCounter">Views <strong>0</strong></span>
+<script>
+  // Fungsi untuk mendapatkan jumlah pengunjung dari penyimpanan lokal bersama
+  function getViews() {
+    return localStorage.getItem('views') || 0;
+  }
+  // Fungsi untuk menambah jumlah pengunjung dan memperbarui tampilan HTML
+  function updateViews() {
+    const viewsCounter = document.getElementById('viewsCounter');
+    let views = parseInt(getViews());
+    views++;
+    localStorage.setItem('views', views);
+    viewsCounter.innerHTML = `Views <strong>${views}</strong>`;
+  }
+  // Memanggil fungsi updateViews saat halaman dimuat
+  window.onload = updateViews;
+</script>
+</div>
                   <div class="information-block di-ib clearfix"><span class="information season"><a href="?">Summer 2022</a></span><span class="information type"><a href="https://www.youtube.com/channel/UCphWyFjr5KiI1PCGy59a7Ug">YouTube</a></span></div>
                 </div>
               </div>
