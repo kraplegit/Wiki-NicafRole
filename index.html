@@ -181,43 +181,47 @@
                     <div class="score-label score-6">0.00</div>
                   </div>
 <div class="di-ib ml12 pl20 pt8">
-<span class="numbers members">Views <strong id="view-count">0</strong></span>
-<script>
-  // Replace with your Google Analytics tracking ID
-  var trackingId = "G-VFRKBLP89P";
-  // Replace with your view count element ID
-  var viewCountElementId = "view-count";
-  // Initialize the Google Analytics client
-  var gapi = new gapi.analytics.create({
-    trackingId: trackingId,
-    cookieDomain: "auto"
-  });
-  // Send a pageview hit to Google Analytics
-  gapi.send("pageview");
-  // Query the Google Analytics real time API for the active users
-  function queryActiveUsers() {
-    var data = new gapi.analytics.report.Data({
-      query: {
-        ids: "ga:" + trackingId,
-        metrics: "rt:activeUsers",
-        dimensions: "rt:pagePath",
-        filters: "rt:pagePath==" + window.location.pathname
-      }
-    });
-    data.on("success", function(response) {
-      // Update the view count element with the active users
-      var viewCountElement = document.getElementById(viewCountElementId);
-      if (response.rows && response.rows.length) {
-        viewCountElement.textContent = response.rows[0][1];
-      } else {
-        viewCountElement.textContent = "0";
-      }
-    });
-    data.execute();
-  }
-  // Query the active users every 5 seconds
-  setInterval(queryActiveUsers, 5000);
-</script></div>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VFRKBLP89P"></script>
+    <script>
+        // Replace 'G-VFRKBLP89P' with your actual Google Analytics Measurement ID
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-VFRKBLP89P');
+    </script>
+    <script>
+        // Function to get new users and update HTML
+        function getNewUsers() {
+            gtag('event', 'page_view', {
+                'send_to': 'G-VFRKBLP89P',
+                'event_category': 'New Users',
+                'event_label': 'New Users Request'
+            });
+
+            // Fetch new users from Google Analytics API
+            gtag('config', 'G-VFRKBLP89P', {
+                'send_page_view': false,
+                'custom_map': {'dimension1': 'newUsers'}
+            });
+
+            gtag('event', 'customEvent', {'newUsers': null});
+
+            // Wait for the data to be sent to Google Analytics
+            setTimeout(function() {
+                // Update the HTML with the new users count
+                var newUsersCount = parseInt(gtag.data[0].customEvent.newUsers);
+                document.getElementById('newUsersCount').innerText = newUsersCount;
+            }, 1000);
+        }
+
+        // Call the function on page load
+        window.onload = getNewUsers;
+    </script>
+
+
+    <span class="numbers members">Views <strong id="newUsersCount">Loading...</strong></span>
+
+</div>
                   <div class="information-block di-ib clearfix"><span class="information season"><a href="?">Summer 2022</a></span><span class="information type"><a href="https://www.youtube.com/channel/UCphWyFjr5KiI1PCGy59a7Ug">YouTube</a></span></div>
                 </div>
               </div>
