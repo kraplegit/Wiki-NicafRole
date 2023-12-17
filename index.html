@@ -180,31 +180,28 @@
                   <div class="fl-l score" data-title="score" data-user="0 Votes" title="indicates a weighted score. Please note that 'Not yet aired' titles are excluded.">
                     <div class="score-label score-6">0.00</div>
                   </div>
-                  <div class="di-ib ml12 pl20 pt8">
+<div class="di-ib ml12 pl20 pt8">
 
 
-    <span class="numbers members">Views <strong id="viewsCounter">0</strong></span>
+<span class="numbers members">Views <strong id="viewCount">0</strong></span>
 
-    <!-- Your other HTML content goes here -->
+<!-- Your other HTML content here -->
 
-    <script>
-        // This script increments the views counter
-        document.addEventListener("DOMContentLoaded", function() {
-            // Increment the views counter (you can replace this with your own logic)
-            var currentViews = parseInt(document.getElementById("viewsCounter").innerText);
-            var newViews = currentViews + 1;
-            document.getElementById("viewsCounter").innerText = newViews;
-
-            // You can also send an event to Google Analytics to track the pageview
-            gtag('event', 'page_view', {
-                'event_category': 'Views',
-                'event_label': 'Page View'
-            });
+<script>
+    // Mengambil jumlah pengunjung dari Google Analytics secara real-time
+    function updateViewCount() {
+        gtag('event', 'page_view', {
+            'send_to': 'G-VFRKBLP89P',
+            'event_callback': function() {
+                var viewCount = gtag.getAll()[0].get('config', 'page_view_count');
+                document.getElementById('viewCount').textContent = viewCount;
+            }
         });
-    </script>
+    }
 
-
-</div>
+    // Memanggil fungsi untuk memperbarui jumlah pengunjung saat halaman dimuat
+    window.onload = updateViewCount;
+</script></div>
                   <div class="information-block di-ib clearfix"><span class="information season"><a href="?">Summer 2022</a></span><span class="information type"><a href="https://www.youtube.com/channel/UCphWyFjr5KiI1PCGy59a7Ug">YouTube</a></span></div>
                 </div>
               </div>
