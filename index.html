@@ -180,25 +180,44 @@
                   <div class="fl-l score" data-title="score" data-user="0 Votes" title="indicates a weighted score. Please note that 'Not yet aired' titles are excluded.">
                     <div class="score-label score-6">0.00</div>
                   </div>
-                  <div class="di-ib ml12 pl20 pt8">
-<span class="numbers members" id="viewsCounter">Views <strong>0</strong></span>
+<div class="di-ib ml12 pl20 pt8">
+<span class="numbers members">Views <strong id="view-count">0</strong></span>
 <script>
-  // Fungsi untuk mendapatkan jumlah pengunjung dari penyimpanan lokal bersama
-  function getViews() {
-    return localStorage.getItem('views') || 0;
+  // Replace with your Google Analytics tracking ID
+  var trackingId = "G-VFRKBLP89P";
+  // Replace with your view count element ID
+  var viewCountElementId = "view-count";
+  // Initialize the Google Analytics client
+  var gapi = new gapi.analytics.create({
+    trackingId: trackingId,
+    cookieDomain: "auto"
+  });
+  // Send a pageview hit to Google Analytics
+  gapi.send("pageview");
+  // Query the Google Analytics real time API for the active users
+  function queryActiveUsers() {
+    var data = new gapi.analytics.report.Data({
+      query: {
+        ids: "ga:" + trackingId,
+        metrics: "rt:activeUsers",
+        dimensions: "rt:pagePath",
+        filters: "rt:pagePath==" + window.location.pathname
+      }
+    });
+    data.on("success", function(response) {
+      // Update the view count element with the active users
+      var viewCountElement = document.getElementById(viewCountElementId);
+      if (response.rows && response.rows.length) {
+        viewCountElement.textContent = response.rows[0][1];
+      } else {
+        viewCountElement.textContent = "0";
+      }
+    });
+    data.execute();
   }
-  // Fungsi untuk menambah jumlah pengunjung dan memperbarui tampilan HTML
-  function updateViews() {
-    const viewsCounter = document.getElementById('viewsCounter');
-    let views = parseInt(getViews());
-    views++;
-    localStorage.setItem('views', views);
-    viewsCounter.innerHTML = `Views <strong>${views}</strong>`;
-  }
-  // Memanggil fungsi updateViews saat halaman dimuat
-  window.onload = updateViews;
-</script>
-</div>
+  // Query the active users every 5 seconds
+  setInterval(queryActiveUsers, 5000);
+</script></div>
                   <div class="information-block di-ib clearfix"><span class="information season"><a href="?">Summer 2022</a></span><span class="information type"><a href="https://www.youtube.com/channel/UCphWyFjr5KiI1PCGy59a7Ug">YouTube</a></span></div>
                 </div>
               </div>
