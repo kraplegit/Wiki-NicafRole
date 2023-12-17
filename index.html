@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VFRKBLP89P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VFRKBLP89P');
+<!-- End Google Analytics Tracking Code -->
+      
 <title>NicafRole - Kraplegit.github.io/Wiki-NicafRole/</title>
 
 <html>
@@ -169,41 +180,7 @@
                   <div class="fl-l score" data-title="score" data-user="0 Votes" title="indicates a weighted score. Please note that 'Not yet aired' titles are excluded.">
                     <div class="score-label score-6">0.00</div>
                   </div>
-<div class="di-ib ml12 pl20 pt8">
-
-
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VFRKBLP89P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VFRKBLP89P');
-    <!-- End Google Analytics Tracking Code -->
-        
-        // Fungsi untuk mendapatkan jumlah pengunjung secara real-time
-        function getRealTimeViews() {
-            gtag('event', 'page_view', {
-                'send_to': 'G-VFRKBLP89P',
-                'event_callback': function() {
-                    // Ambil jumlah pengunjung dari objek gtag
-                    var realTimeViews = window.gtag.dataLayer[0].config[0].metrics.find(metric => metric.index === 1).values[0];
-                    
-                    // Perbarui tampilan HTML
-                    document.getElementById('realTimeViews').innerText = 'Views ' + realTimeViews;
-                }
-            });
-        }
-
-        // Panggil fungsi saat halaman dimuat
-        window.onload = getRealTimeViews;
-    </script>
-
-
-    <span id="realTimeViews" class="numbers members">Views <strong>0</strong></span>
-
-</div>
+<div class="di-ib ml12 pl20 pt8"><span class="numbers members">Views <strong>0</strong></span></div>
                   <div class="information-block di-ib clearfix"><span class="information season"><a href="?">Summer 2022</a></span><span class="information type"><a href="https://www.youtube.com/channel/UCphWyFjr5KiI1PCGy59a7Ug">YouTube</a></span></div>
                 </div>
               </div>
