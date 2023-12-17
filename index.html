@@ -181,30 +181,24 @@
                     <div class="score-label score-6">0.00</div>
                   </div>
                   <div class="di-ib ml12 pl20 pt8">
-
-
-    <span class="numbers members">Views <strong id="viewsCounter">0</strong></span>
-
-    <!-- Your other HTML content goes here -->
-
-    <script>
-        // This script increments the views counter
-        document.addEventListener("DOMContentLoaded", function() {
-            // Increment the views counter (you can replace this with your own logic)
-            var currentViews = parseInt(document.getElementById("viewsCounter").innerText);
-            var newViews = currentViews + 1;
-            document.getElementById("viewsCounter").innerText = newViews;
-
-            // You can also send an event to Google Analytics to track the pageview
-            gtag('event', 'page_view', {
-                'event_category': 'Views',
-                'event_label': 'Page View'
-            });
-        });
-    </script>
-
-
-</div>
+                  <span class="numbers members" id="viewsCounter">Views <strong>0</strong></span>
+                    <script>
+                      // Fungsi untuk mendapatkan jumlah pengunjung dari penyimpanan lokal
+                      function getViews() {
+                        return localStorage.getItem('views') || 0;
+                      }
+                      // Fungsi untuk menambah jumlah pengunjung dan memperbarui tampilan HTML
+                      function updateViews() {
+                        const viewsCounter = document.getElementById('viewsCounter');
+                        let views = parseInt(getViews());
+                        views++;
+                        localStorage.setItem('views', views);
+                        viewsCounter.innerHTML = `Views <strong>${views}</strong>`;
+                      }
+                      // Memanggil fungsi updateViews saat halaman dimuat
+                      window.onload = updateViews;
+                    </script>
+                  </div>
                   <div class="information-block di-ib clearfix"><span class="information season"><a href="?">Summer 2022</a></span><span class="information type"><a href="https://www.youtube.com/channel/UCphWyFjr5KiI1PCGy59a7Ug">YouTube</a></span></div>
                 </div>
               </div>
